@@ -1,0 +1,17 @@
+body {
+    background-color: blueviolet;
+}
+
+.main {
+    background-color: rgb(13, 13, 236) !important;
+    border-radius: 25px !important;
+    filter: blur(0px);
+}
+
+.card {
+    background-color: rgb(13, 13, 236) !important;
+}
+
+.collapse {
+    opacity: 0.7;
+}

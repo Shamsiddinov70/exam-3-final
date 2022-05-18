@@ -1,32 +1,37 @@
-var elWrapper = elFind('.wrapper');
+var elWrapper = elFind(".wrapper");
 
 function render(posts) {
     for (var i = 0; i < posts.length; i++) {
         var post = `
-        <div class="main w-75 mx-auto border p-4 rounded shadow-sm p-3 mb-5 bg-white rounded">
-            <div class="top-names d-flex">
-                <img class="rounded-circle" src="https://picsum.photos/id/1/70" alt="picsum-img">
-                <div class="username ms-3">
-                    <p class="m-0 fs-3"><b>${posts[i].user.name}</b></p>
-                    <small class="m-0">@${posts[i].user.username}</small>
+        <div class="main w-75 mx-auto border border-primary p-4 rounded shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="main-wrapper">
+                <div class="top-names text-light d-flex">
+                    <img class="rounded-circle" src="https://picsum.photos/id/1/70" alt="picsum-img">
+                    <div class="username ms-3">
+                        <p class="m-0 fs-3"><b>${posts[i].user.name}</b></p>
+                        <small class="m-0 fs-5">@${posts[i].user.username}</small>
+                    </div>
                 </div>
-            </div iv>
-            <h3 class="title m-0 mt-3 mb-2">${posts[i].title}</h3>
-            <p class="text m-0">${posts[i].body}</p>
+                <h3 class="title m-0 mt-5 mb-3 text-light">${posts[i].title}</h3>
+                <p class="text m-0 text-light">${posts[i].body}</p>
+                <div class="div d-flex align-items-center justify-content-between">
+                    <a class="btn btn-success mb-2 mt-3" data-bs-toggle="collapse" href="#collapseExample${i}" role="button"
+                        aria-expanded="true" aria-controls="collapseExample">
+                        Comments
+                    </a>
+                </div>
+            </div>
 
-            <a class="btn btn-primary mb-2 mt-3" data-bs-toggle="collapse" href="#collapseExample${i}" role="button"
-                aria-expanded="true" aria-controls="collapseExample">
-                Comments
-            </a>
-            <div class="collapse js-collaper" id="collapseExample${i}">
-        </div>
+            <div class="collapse js-collaper text-light" id="collapseExample${i}"></div>
+
+
+
         </div>`;
 
         var wrapp = document.createElement("div");
         wrapp.innerHTML = post;
         elWrapper.appendChild(wrapp);
         // console.log(elWrapper)
-
 
         let collWrapp = document.querySelectorAll(`.js-collaper`)[i];
 
@@ -36,14 +41,18 @@ function render(posts) {
                 ${posts[i].comments[j].name}
                 </h4>
                 <p class="ps-3">${posts[i].comments[j].body}</p>
-            </div>`
+            </div>`;
             var commWrap = document.createElement("div");
 
             commWrap.innerHTML = collapse;
             collWrapp.appendChild(commWrap);
         }
-    }
 
+        for (var k = 0; k < posts[i].user; k++) {
+
+        }
+
+    }
 }
 
-render(posts)
+render(posts);
